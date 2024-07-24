@@ -1,2 +1,5 @@
 myenv/
+simple_team_member_management/__pycache__/
+simple_team_member_management/members/__pycache__/
+simple_team_member_management/members/migrations/__pycache__/
 
