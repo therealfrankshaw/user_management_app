@@ -3,12 +3,27 @@ import { useState, useEffect } from 'react'
 function TeamMembers() {
   const [teamMembers, setTeamMembers] = useState([])
 
+  const getTeamMembers = () => {
+    fetch('http://127.0.0.1:8000/api/users')
+
+      .then(response => response.json())
+      .then(data => {
+        const userData = data.map(user => {
+          return {
+            ...user,
+            name: user.first_name + ' ' + user.last_name,
+            phone: user.number,
+          }
+        })
+        setTeamMembers(userData)
+      })
+      .catch(error => console.error('get team members error', error))
+  }
+
   useEffect(() => {
-    setTeamMembers([
-      { id: 1, name: 'John Doe', role: 'admin', phone: '1234567890', email: 'john.doe@example.com' },
-      { id: 2, name: 'Jane Doe', role: 'regular', phone: '1234567890', email: 'jane.doe@example.com' },
-    ])
+    getTeamMembers()
   }, [])
+
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
