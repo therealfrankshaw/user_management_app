@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 function EditTeamMember() {
   const { id } = useParams()
@@ -46,7 +47,19 @@ function EditTeamMember() {
     fetch(`http://localhost:8000/api/users/${id}/`, {
       method: 'DELETE',
     })
-    navigate('/',  { state: { refreshNeeded: true }})
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then(err => Promise.reject(err));
+      }
+      toast(`User Deleted: ${formData.first_name} ${formData.last_name}`)
+      navigate('/',  { state: { refreshNeeded: true }})
+    })
+    .catch((error) => {
+      Object.entries(error).forEach(([_, value]) => {
+        toast(`An error occurred while deleting the user. \n ${value}`)
+      });
+    })
+    
   }
 
   const updateTeamMember = () => {
@@ -57,7 +70,18 @@ function EditTeamMember() {
         'Content-Type': 'application/json'
       },
     })
-    navigate('/')
+    .then((response) => {
+      if (!response.ok) {
+        console.log('User not updated')
+        return response.json().then(err => Promise.reject(err));
+      }
+      navigate('/')
+    })
+    .catch((error) => {
+      Object.entries(error).forEach(([_, value]) => {
+        toast(`An error occurred while updating the user. \n ${value}`)
+      });
+    });
   }
 
   useEffect(() => {

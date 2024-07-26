@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+
 
 function AddTeamMember() {
   const navigate = useNavigate()
@@ -40,7 +42,9 @@ function AddTeamMember() {
       navigate('/')
     }).catch((error) => {
       console.log('Error creating user:', error);
-      alert('Error creating user');
+      Object.entries(error).forEach(([_, value]) => {
+        toast(`An error occured while creating the user. \n ${value}`)
+      });
     });
   }
 
