@@ -17,7 +17,7 @@ function AddTeamMember() {
     })
   }
 
-  const addTeamMember = (e) => {
+  const createTeamMember = (e) => {
     e.preventDefault()
     fetch('http://127.0.0.1:8000/api/users/', {
       method: 'POST',
@@ -60,7 +60,7 @@ function AddTeamMember() {
       <h1>Add a team member</h1>
       <p>set email, location, and role</p>
       <hr />
-      <form style={formStyle} onSubmit={addTeamMember}>
+      <form style={formStyle} onSubmit={createTeamMember}>
         <h2>info</h2>
         <input type="text" placeholder="first name" name="first_name" value={formData.first_name} onChange={handleChange} />
         <input type="text" placeholder="last_name" name="last_name" value={formData.last_name} onChange={handleChange} />

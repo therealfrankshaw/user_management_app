@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       {/* <TeamMembers /> */}
-      <AddTeamMember />
-      {/* <EditTeamMember /> */}
+      {/* <AddTeamMember /> */}
+      <EditTeamMember />
     </>
   )
 }
