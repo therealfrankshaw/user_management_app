@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function TeamMembers() {
+  const navigate = useNavigate()
   const [teamMembers, setTeamMembers] = useState([])
 
   const getTeamMembers = () => {
@@ -19,6 +20,10 @@ function TeamMembers() {
         setTeamMembers(userData)
       })
       .catch(error => console.error('get team members error', error))
+  }
+  
+  const handleClick = (id) => {
+    navigate(`/edit_team_member/${id}`)
   }
 
   useEffect(() => {
@@ -52,7 +57,7 @@ function TeamMembers() {
           displayName = `${member.name} (admin)`
         }
         return (
-          <div key={`member-${member.id}`}>
+          <div key={`member-${member.id}`} style={{cursor: 'pointer'}} onClick={()=>handleClick(member.id)}>
             <h2>{displayName}</h2>
             <p>{member.phone}</p>
             <p>{member.email}</p>

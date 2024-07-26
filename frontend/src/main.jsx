@@ -18,7 +18,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<TeamMembers />} />
       <Route path="add_team_member" element={<AddTeamMember />} />
-      <Route path="edit_team_member" element={<EditTeamMember />} />
+      <Route path="edit_team_member/:id" element={<EditTeamMember />} />
     </Route>
   )
 );

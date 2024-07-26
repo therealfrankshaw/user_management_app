@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 
 function EditTeamMember() {
+  const { id } = useParams()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -17,7 +20,7 @@ function EditTeamMember() {
   }
 
   const getTeamMember = () => {
-    fetch('http://127.0.0.1:8000/api/users/7')
+    fetch(`http://127.0.0.1:8000/api/users/${id}`)
       .then(response => response.json())
       .then(data => {
         const userData = {
@@ -40,27 +43,21 @@ function EditTeamMember() {
   }
 
   const deleteTeamMember = () => {
-    fetch(`http://localhost:8000/api/users/6/`, {
+    fetch(`http://localhost:8000/api/users/${id}/`, {
       method: 'DELETE',
     })
-    setFormData({
-      ...formData,
-      first_name: '',
-      last_name: '',
-      email: '',
-      number: '',
-      role: 'regular',
-    })
+    navigate('/',  { state: { refreshNeeded: true }})
   }
 
   const updateTeamMember = () => {
-    fetch(`http://localhost:8000/api/users/7/`, {
+    fetch(`http://localhost:8000/api/users/${id}/`, {
       method: 'PUT',
       body: JSON.stringify(formData),
       headers: {
         'Content-Type': 'application/json'
       },
     })
+    navigate('/')
   }
 
   useEffect(() => {
