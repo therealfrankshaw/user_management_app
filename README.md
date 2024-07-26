@@ -53,8 +53,10 @@ team member actions
 
 # Member list
 <img width="598" alt="image" src="https://github.com/user-attachments/assets/50f2d79a-7209-40bb-b58f-c39d882989cb">
+
 # Member Add
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/56f0b4ee-baa5-4ce2-adaa-bda01fd20a5e">
+
 # Member Edit
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/2825256a-99e8-4099-bcf1-d3bc37008e07">
 
