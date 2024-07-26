@@ -42,7 +42,6 @@ function TeamMembers() {
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Team Members</h1>
-        {/* <button style={buttonStyle} onClick ={()=>{}}> + </button> */}
         <Link to="/add_team_member" style={buttonStyle}> + </Link>
       </div>
       <p>You have {teamMembers.length} team members</p>

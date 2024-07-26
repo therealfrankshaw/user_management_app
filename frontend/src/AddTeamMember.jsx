@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function AddTeamMember() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -35,13 +37,7 @@ function AddTeamMember() {
     })
     .then((data) => {
       console.log('User created successfully:', data);
-      setFormData({
-        first_name: '',
-        last_name: '',
-        email: '',
-        number: '',
-        role: 'regular',
-      })
+      navigate('/')
     }).catch((error) => {
       console.log('Error creating user:', error);
       alert('Error creating user');
