@@ -1,16 +1,9 @@
-import { useState } from 'react'
-import TeamMembers from './TeamMembers'
-import AddTeamMember from './AddTeamMember'
-import EditTeamMember from './EditTeamMember'
 import './App.css'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
-    <>
-      {/* <TeamMembers /> */}
-      {/* <AddTeamMember /> */}
-      <EditTeamMember />
-    </>
+    <Outlet />
   )
 }
 

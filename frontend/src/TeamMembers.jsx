@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function TeamMembers() {
   const [teamMembers, setTeamMembers] = useState([])
@@ -24,11 +25,25 @@ function TeamMembers() {
     getTeamMembers()
   }, [])
 
+  const buttonStyle = {
+    width: '50px', 
+    height: '50px', 
+    color: 'white', 
+    border: 'none', 
+    borderRadius: '5px', 
+    margin: '10px',
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: 'grey'
+  }
+
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Team Members</h1>
-        <button style={{width: '50px', height: '50px', color: 'white', border: 'none', borderRadius: '5px', margin: '10px'}}> + </button>
+        {/* <button style={buttonStyle} onClick ={()=>{}}> + </button> */}
+        <Link to="/add_team_member" style={buttonStyle}> + </Link>
       </div>
       <p>You have {teamMembers.length} team members</p>
       <hr />
