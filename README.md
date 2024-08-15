@@ -1,5 +1,10 @@
-# take_home_iw_challenge
-take home challenge
+# Objective
+As a user, I can:
+- add other users
+- support different roles(admin/not admin)
+- edit users
+- remove users
+- support basic validations(email/number uniqueness) 
 
 # Setup
 
